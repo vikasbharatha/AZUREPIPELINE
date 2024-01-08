@@ -176,3 +176,11 @@ stages:
               azureSubscriptionEndpointForSecrets: 'Pay-As-You-Go(xxxxxxxxxxxxxxxxxxxxxxxxxxx)'
               azureContainerRegistry: 'xxxxxxxxx.azurecr.io'
               secretName: 'acrsecret'
+
+- task: replacetokens@5
+  inputs:
+    rootDirectory: '$(Build.SourcesDirectory)'
+    targetFiles: '**/appsettings.json'
+    tokenPattern: 'json'
+    writeBOM: true
+    actionOnMissing: 'warn'
